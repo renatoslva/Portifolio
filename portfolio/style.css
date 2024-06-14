@@ -3,15 +3,20 @@
     margin: 0;
     padding: 0;
     color: white;
+    
    
 }
 
 .fundo{
+
     background-image: linear-gradient(#000000f6, #555555da);
     border: solid black 3px;
+
+
 }
+@media(max-width: 900px){
 .box1{
-height: 100vh;
+
   
   }
 .nome{
@@ -38,6 +43,7 @@ height: 100vh;
        margin-left: 40%;
         padding-right: 25%;
        
+       
     }
     .frase{
         position: relative;
@@ -54,4 +60,45 @@ height: 100vh;
 }
 :hover .seta{
     cursor: pointer;
+}
+}
+
+@media(max-width: 600px){
+    .nome{
+        font-size: 30px;
+        float:right;
+        padding: 30px;
+        margin:  20px;
+         border-bottom: solid rgba(233, 225, 225, 0.904) 2px;
+    }
+         .img{
+            margin-top: -50%;
+            
+             }
+             .frontend{
+              position: relative;
+                 left: 50%;
+                transform: translatex(-47%);
+               
+                
+              }
+              #seta2{
+             left:30%;
+             cursor: pointer;
+             
+            }
+
+            .port{
+                margin-bottom: 100%;
+                left: 70%;
+                font-size: 20px;
+               
+          }
+
+          .frase{
+           margin-top: -30%;
+        left: 50%;
+        font-size: 20px;
+    
+        }
 }
