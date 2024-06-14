@@ -1,17 +1,15 @@
 *{
     font-family: Arial, Helvetica, sans-serif;
-    margin: 0;
-    padding: 0;
     color: white;
-    
+   
    
 }
 
 .fundo{
-
+    
     background-image: linear-gradient(#000000f6, #555555da);
     border: solid black 3px;
-
+    
 
 }
 @media(max-width: 1600px){
@@ -65,10 +63,10 @@
 
 @media(max-width: 600px){
     .nome{
-        font-size: 30px;
-        float:right;
-        padding: 30px;
-        margin:  20px;
+        font-size: 40px;
+        margin: 30px;
+        padding: 15px;
+        
          border-bottom: solid rgba(233, 225, 225, 0.904) 2px;
     }
          .img{
@@ -78,7 +76,7 @@
              .frontend{
               position: relative;
                  left: 50%;
-                transform: translatex(-47%);
+                transform: translatex(-51%);
                
                 
               }
@@ -96,7 +94,7 @@
           }
 
           .frase{
-           margin-top: -30%;
+           margin-top: -10%;
         left: 50%;
         font-size: 20px;
     
