@@ -1,5 +1,7 @@
 *{
     font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
     color: white;
    
    
@@ -14,6 +16,7 @@
 }
 @media(max-width: 1600px){
 .box1{
+    margin-bottom: -50%;
 
   
   }
@@ -61,6 +64,8 @@
 }
 }
 
+
+
 @media(max-width: 600px){
     .nome{
         font-size: 40px;
@@ -83,18 +88,19 @@
               #seta2{
              left:30%;
              cursor: pointer;
+             margin-bottom: ;
              
             }
 
             .port{
-                margin-bottom: 100%;
+                margin-bottom: 150%;
                 left: 70%;
                 font-size: 20px;
                
           }
 
           .frase{
-           margin-top: -10%;
+           margin-bottom: 30%;
         left: 50%;
         font-size: 20px;
     
