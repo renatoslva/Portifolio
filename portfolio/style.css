@@ -2,7 +2,7 @@
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     padding: 0;
-    color: white;
+   
    
    
 }
@@ -11,7 +11,8 @@
     
     background-image: linear-gradient(#000000f6, #555555da);
     border: solid black 3px;
-    width: auto;
+   
+  
 }
 
 @media(max-width: 1600px){
@@ -20,16 +21,17 @@
          margin-bottom: -50%;
        }
 .nome{
+    color: rgb(201, 196, 192);
     float:right;
     font-size: 80px;
     margin: 70px;
     padding: 30px;
-    border-bottom: solid rgba(12, 11, 11, 0.904) 2px;
+    border-bottom: solid rgba(226, 221, 221, 0.904) 2px;
 }
 .frontend{
   position: relative;
-    left: 70%;
-    transform: translatey(140%);
+    left: 72%;
+    transform: translatey(160%);
 }
     .img{
         width: 50%;
@@ -39,24 +41,25 @@
     .seta{
     position: relative;
     left: 50%;
-        margin-top: 30%;
+        margin-top: 40%;
        margin-left: 40%;
         padding-right: 25%;
        
        
     }
     .frase{
+
         position: relative;
     left: 60%;
     transform: translatey(1080%);
-    font-size: 20px;
+    font-size: 40px;
 
     }
 .port{
     position: relative;
     left: 89%;
     transform: translatey(340px);
-    font-size: 20px;
+    font-size: 40px;
 }
 :hover .seta{
     cursor: pointer;
@@ -98,7 +101,7 @@
              margin-bottom: 50%;
              margin-left: 50%;
              position: relative;
-             transform: translateY(-175%);
+             transform: translateY(-300px);
              
              
             }
