@@ -11,7 +11,7 @@
     
     background-image: linear-gradient(#000000f6, #555555da);
     border: solid black 3px;
-     
+    width: auto;
 }
 
 @media(max-width: 1600px){
@@ -67,29 +67,27 @@
 
 @media(max-width: 600px){
     .fundo{
-        width: 400px;
-        height: 700px;
+        width: 100vw;
+        height: 550px;
     }
     .nome{
         
         font-size: 30px;
         margin: 30px;
         padding: 15px;
-        border: solid ;
+        
     }
          .img{
-            position: relative;
-            transform: translateY(-350%);
-            margin-bottom: 100%;
-
-            border: solid;
+            width: 60%;
+            transform:translateY(-250%) ;
             
              }
              .frontend{
               position: relative;
                  left: 50%;
                 transform: translatex(-51%);
-                border: solid;
+                width: 90%;
+               
                
                 
               }
@@ -98,23 +96,27 @@
              width:5px;
              cursor: pointer;
              margin-bottom: 50%;
-             border: solid black;
+             margin-left: 50%;
+             position: relative;
+             transform: translateY(-175%);
+             
              
             }
 
             .port{
-                width: 20%;
+               left: 370px;
                 position: relative;
-                transform: translatex(-60%);
+                transform: translateY(-600%);
+                margin-top: -70%;               
                font-size: 20px;
-               border: solid black;
-               margin-bottom: 70px;
+               
           }
 
           .frase{
         margin-bottom: 100%;
         left: 55%;
         font-size: 20px;
-    
+        position: relative;
+        transform: translateY(10px);
         }
 }
