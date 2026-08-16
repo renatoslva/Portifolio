@@ -1,0 +1,772 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Portfólio cyberpunk de Renato Silva Proença, estudante de Análise e Desenvolvimento de Sistemas.">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; base-uri 'none'; form-action 'none'; object-src 'none'; frame-ancestors 'self'">
+  <meta name="theme-color" content="#05060a">
+  <title>Renato Silva Proença | Portfólio Cyberpunk</title>
+
+  <style>
+    :root {
+      --bg: #05060a;
+      --panel: #0b0f17;
+      --panel-2: #101621;
+      --ink: #f3f8ff;
+      --muted: #9aa8ba;
+      --line: rgba(0, 229, 255, .28);
+      --cyan: #00e5ff;
+      --lime: #b7ff2a;
+      --pink: #ff2bd6;
+      --amber: #ffd166;
+      --radius: 8px;
+      --shadow: 0 22px 70px rgba(0, 229, 255, .12);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(0, 229, 255, .15), transparent 34%),
+        radial-gradient(circle at 90% 8%, rgba(255, 43, 214, .13), transparent 34%),
+        linear-gradient(180deg, #05060a 0%, #070b12 46%, #05060a 100%);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,.78), transparent 82%);
+      z-index: -1;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button, input { font: inherit; }
+    button { cursor: pointer; }
+    code { color: var(--lime); }
+    .wrap { width: min(1160px, calc(100% - 36px)); margin: auto; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: rgba(5, 6, 10, .88);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(16px);
+    }
+
+    .nav {
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand { display: flex; align-items: center; gap: 11px; font-weight: 900; }
+    .brand-mark {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      color: #02040a;
+      background: linear-gradient(135deg, var(--cyan), var(--lime));
+      border-radius: 8px;
+      box-shadow: 0 0 24px rgba(0, 229, 255, .45);
+    }
+
+    .nav-links { display: flex; gap: 4px; flex-wrap: wrap; font-size: 14px; font-weight: 900; }
+    .nav-links a { padding: 9px 10px; border-radius: 8px; color: #dceeff; }
+    .nav-links a:hover, .nav-links a:focus { color: #02040a; background: var(--cyan); outline: none; }
+
+    .menu {
+      display: none;
+      border: 1px solid var(--line);
+      color: var(--ink);
+      background: #0b0f17;
+      border-radius: 8px;
+      padding: 9px 12px;
+      font-weight: 900;
+    }
+
+    .hero { min-height: 720px; display: flex; align-items: center; position: relative; }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 110px;
+      background: linear-gradient(to bottom, transparent, var(--bg));
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.08fr .92fr;
+      gap: 32px;
+      align-items: center;
+      padding: 72px 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: var(--lime);
+      font-size: 13px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      margin-bottom: 16px;
+      font-size: clamp(44px, 8vw, 88px);
+      line-height: .94;
+      text-transform: uppercase;
+    }
+    h2 { margin-bottom: 12px; font-size: clamp(30px, 4.2vw, 52px); line-height: 1.05; }
+    h3 { margin-bottom: 8px; font-size: 22px; line-height: 1.15; }
+
+    .glitch {
+      text-shadow: 2px 0 var(--cyan), -2px 0 var(--pink), 0 0 26px rgba(0,229,255,.35);
+    }
+
+    .hero p { max-width: 740px; color: #d9e7f7; font-size: 20px; }
+
+    .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+    .btn {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      padding: 11px 15px;
+      font-weight: 900;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary { color: #02040a; background: var(--cyan); box-shadow: 0 0 22px rgba(0,229,255,.32); }
+    .btn-secondary { color: var(--ink); background: rgba(255,255,255,.04); border-color: var(--line); }
+    .btn-dark { color: #02040a; background: var(--lime); }
+    .btn-light { color: var(--ink); background: rgba(255,255,255,.04); border-color: rgba(255,255,255,.16); }
+
+    .terminal-card {
+      position: relative;
+      background: linear-gradient(180deg, rgba(16,22,33,.96), rgba(9,13,20,.96));
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .terminal-top {
+      display: flex;
+      gap: 8px;
+      padding: 13px 16px;
+      border-bottom: 1px solid rgba(255,255,255,.09);
+      background: rgba(255,255,255,.03);
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: var(--cyan);
+      box-shadow: 0 0 14px currentColor;
+    }
+    .dot:nth-child(2) { background: var(--pink); }
+    .dot:nth-child(3) { background: var(--lime); }
+
+    .terminal-body { padding: 22px; }
+    .avatar {
+      width: 118px;
+      height: 118px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 18px;
+      color: #02040a;
+      background: linear-gradient(135deg, var(--cyan), var(--pink));
+      border-radius: 8px;
+      font-size: 42px;
+      font-weight: 900;
+    }
+
+    .quick-list {
+      display: grid;
+      gap: 10px;
+      margin: 18px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .quick-list li {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      border-top: 1px solid rgba(255,255,255,.1);
+      padding-top: 10px;
+    }
+
+    .quick-list span { color: var(--muted); text-align: right; }
+
+    section { padding: 76px 0; }
+    .band { background: rgba(255,255,255,.025); border-block: 1px solid rgba(255,255,255,.08); }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 1fr minmax(260px, 420px);
+      gap: 28px;
+      align-items: end;
+      margin-bottom: 30px;
+    }
+
+    .section-head p, .muted, .card p, .timeline p { color: var(--muted); }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+
+    .panel, .card, .timeline, .contact-box {
+      background: linear-gradient(180deg, rgba(16,22,33,.92), rgba(10,14,22,.92));
+      border: 1px solid rgba(0, 229, 255, .2);
+      border-radius: var(--radius);
+      padding: 20px;
+      overflow: hidden;
+      box-shadow: 0 14px 40px rgba(0,0,0,.22);
+    }
+
+    .card:hover, .panel:hover {
+      border-color: rgba(0,229,255,.55);
+      box-shadow: 0 0 36px rgba(0,229,255,.12);
+    }
+
+    .tag {
+      display: inline-flex;
+      margin-bottom: 10px;
+      color: var(--cyan);
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .skill-list, .project-meta, .social-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 16px;
+    }
+
+    .skill, .project-meta span, .social-list a {
+      padding: 8px 10px;
+      border-radius: 8px;
+      background: rgba(0,229,255,.08);
+      border: 1px solid rgba(0,229,255,.18);
+      color: #e9fbff;
+      font-weight: 900;
+      font-size: 14px;
+    }
+
+    .social-list a:hover { background: var(--cyan); color: #02040a; }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .stat {
+      padding: 14px;
+      border-radius: 8px;
+      background: rgba(255,255,255,.04);
+      border-top: 4px solid var(--cyan);
+    }
+
+    .stat:nth-child(2) { border-top-color: var(--pink); }
+    .stat:nth-child(3) { border-top-color: var(--lime); }
+    .stat:nth-child(4) { border-top-color: var(--amber); }
+    .stat strong { display: block; font-size: 24px; line-height: 1.1; }
+
+    .projects-tools { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; }
+
+    .chip, .search {
+      min-height: 42px;
+      border: 1px solid rgba(0,229,255,.24);
+      border-radius: 8px;
+      background: rgba(255,255,255,.04);
+      color: var(--ink);
+      padding: 9px 12px;
+    }
+
+    .chip { font-weight: 900; }
+    .chip[aria-pressed="true"] { color: #02040a; background: var(--cyan); border-color: var(--cyan); }
+    .search { flex: 1; min-width: 230px; }
+    .search::placeholder { color: #78889b; }
+
+    .project-card { display: flex; flex-direction: column; min-height: 286px; position: relative; }
+
+    .project-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto;
+      height: 3px;
+      background: linear-gradient(90deg, var(--cyan), var(--pink), var(--lime));
+    }
+
+    .project-card .card-body { flex: 1; display: flex; flex-direction: column; }
+    .project-links { display: flex; gap: 8px; flex-wrap: wrap; margin-top: auto; padding-top: 16px; }
+
+    .project-links a {
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 8px;
+      padding: 8px 10px;
+      font-weight: 900;
+      font-size: 14px;
+    }
+
+    .project-links a:hover { color: #02040a; background: var(--lime); }
+
+    .edit-note {
+      margin-top: 18px;
+      padding: 14px;
+      border-radius: 8px;
+      border: 1px dashed rgba(183,255,42,.5);
+      background: rgba(183,255,42,.06);
+      color: #dff7b1;
+    }
+
+    .timeline { display: grid; gap: 14px; }
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      gap: 16px;
+      border-top: 1px solid rgba(255,255,255,.1);
+      padding-top: 14px;
+    }
+
+    .timeline-item:first-child { border-top: 0; padding-top: 0; }
+    .when { font-weight: 900; color: var(--lime); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 22px;
+      align-items: start;
+    }
+
+    .contact-line {
+      display: grid;
+      grid-template-columns: 115px 1fr;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+    }
+
+    .contact-line:last-child { border-bottom: 0; }
+    .contact-line a { color: var(--cyan); text-decoration: underline; text-underline-offset: 3px; }
+
+    footer {
+      background: #030407;
+      color: #cfd9e6;
+      border-top: 1px solid rgba(0,229,255,.18);
+      padding: 30px 0;
+    }
+
+    .footer-grid { display: flex; justify-content: space-between; gap: 18px; flex-wrap: wrap; }
+    .hidden { display: none !important; }
+
+    @media (max-width: 920px) {
+      .menu { display: inline-flex; }
+      .nav { flex-wrap: wrap; padding: 12px 0; }
+      .nav-links { display: none; width: 100%; }
+      .nav.open .nav-links { display: flex; }
+      .hero-grid, .section-head, .grid-2, .contact-grid { grid-template-columns: 1fr; }
+      .cards { grid-template-columns: repeat(2, 1fr); }
+      .stats { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 620px) {
+      .hero { min-height: auto; }
+      .hero-grid { padding: 54px 0; }
+      .cards, .stats { grid-template-columns: 1fr; }
+      section { padding: 56px 0; }
+      .timeline-item, .contact-line { grid-template-columns: 1fr; gap: 4px; }
+      .quick-list li { display: block; }
+      .quick-list span { display: block; text-align: left; margin-top: 2px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <nav class="nav" id="nav" aria-label="Menu principal">
+        <a class="brand" href="#inicio"><span class="brand-mark">RP</span><span>Renato Silva Proença</span></a>
+        <button class="menu" id="menu" type="button" aria-expanded="false">Menu</button>
+        <div class="nav-links">
+          <a href="#sobre">Sobre</a>
+          <a href="#habilidades">Stack</a>
+          <a href="#projetos">Projetos</a>
+          <a href="#redes">Redes</a>
+          <a href="#formacao">Formação</a>
+          <a href="#contato">Contato</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="wrap hero-grid">
+        <div>
+          <p class="eyebrow">Developer portfolio // ADS em conclusão</p>
+          <h1 class="glitch">Renato Silva Proença</h1>
+          <p>Desenvolvedor em formação com foco em interfaces web, aplicações em Python, React, Git/GitHub, Linux e conceitos de hardware. Visual cyberpunk, estrutura profissional e espaço pronto para seus projetos reais.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="#projetos">Ver projetos</a>
+            <a class="btn btn-secondary" href="#redes">Minhas redes</a>
+          </div>
+        </div>
+
+        <aside class="terminal-card" aria-label="Resumo profissional">
+          <div class="terminal-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <div class="terminal-body">
+            <div class="avatar">RP</div>
+            <h2>Perfil técnico</h2>
+            <p class="muted">38 anos, estudante de Análise e Desenvolvimento de Sistemas, construindo projetos com base sólida em front-end, Python e ferramentas de desenvolvimento.</p>
+            <ul class="quick-list">
+              <li><strong>Status</strong><span>ADS em fase final</span></li>
+              <li><strong>Front-end</strong><span>HTML, CSS, JavaScript, React</span></li>
+              <li><strong>Back-end</strong><span>Python</span></li>
+              <li><strong>Ferramentas</strong><span>Git, GitHub, Linux, hardware</span></li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="sobre">
+      <div class="wrap">
+        <div class="section-head">
+          <div><p class="eyebrow">Sobre mim</p><h2>Construindo carreira em tecnologia</h2></div>
+          <p>Portfólio preparado para apresentar sua trajetória, suas habilidades e os projetos que você está desenvolvendo.</p>
+        </div>
+
+        <div class="grid-2">
+          <article class="panel">
+            <h3>Quem sou</h3>
+            <p>Sou Renato Silva Proença, tenho 38 anos e estou terminando Análise e Desenvolvimento de Sistemas. Tenho conhecimento em HTML, CSS, JavaScript, Python, React, Git, GitHub, Linux e conceitos de hardware.</p>
+            <p>Meu foco é evoluir criando projetos reais, bem organizados e úteis para resolver problemas do dia a dia.</p>
+          </article>
+
+          <article class="panel">
+            <h3>Objetivo profissional</h3>
+            <p>Busco oportunidades para atuar com desenvolvimento de sistemas, front-end, suporte técnico ou automações, aplicando minha base técnica e aprendendo com projetos práticos.</p>
+            <div class="stats">
+              <div class="stat"><strong>ADS</strong><span>Formação</span></div>
+              <div class="stat"><strong>Web</strong><span>HTML/CSS/JS</span></div>
+              <div class="stat"><strong>Py</strong><span>Python</span></div>
+              <div class="stat"><strong>UX</strong><span>Projetos</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="band" id="habilidades">
+      <div class="wrap">
+        <div class="section-head">
+          <div><p class="eyebrow">Stack</p><h2>Habilidades técnicas</h2></div>
+          <p>Organização por área para facilitar a leitura de recrutadores, professores e parceiros.</p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <span class="tag">Front-end</span>
+            <h3>HTML, CSS e JavaScript</h3>
+            <p>Criação de páginas responsivas, interfaces modernas, filtros, formulários, cálculos e interações.</p>
+            <div class="skill-list"><span class="skill">HTML5</span><span class="skill">CSS3</span><span class="skill">JavaScript</span></div>
+          </article>
+
+          <article class="card">
+            <span class="tag">React</span>
+            <h3>Interfaces com componentes</h3>
+            <p>Base em componentes, estado, propriedades e organização de telas para aplicações modernas.</p>
+            <div class="skill-list"><span class="skill">React</span><span class="skill">Componentes</span><span class="skill">Hooks</span></div>
+          </article>
+
+          <article class="card">
+            <span class="tag">Python</span>
+            <h3>Aplicativos e lógica</h3>
+            <p>Scripts, calculadoras, apps desktop simples, lógica de programação e organização de funções.</p>
+            <div class="skill-list"><span class="skill">Python</span><span class="skill">Tkinter</span><span class="skill">Automação</span></div>
+          </article>
+
+          <article class="card">
+            <span class="tag">Versionamento</span>
+            <h3>Git e GitHub</h3>
+            <p>Controle de versão, commits, repositórios e documentação básica de projetos.</p>
+            <div class="skill-list"><span class="skill">Git</span><span class="skill">GitHub</span><span class="skill">README</span></div>
+          </article>
+
+          <article class="card">
+            <span class="tag">Sistema</span>
+            <h3>Linux</h3>
+            <p>Uso de terminal, comandos, arquivos, permissões e ambiente de desenvolvimento.</p>
+            <div class="skill-list"><span class="skill">Terminal</span><span class="skill">Shell</span><span class="skill">Ambiente</span></div>
+          </article>
+
+          <article class="card">
+            <span class="tag">Hardware</span>
+            <h3>Conceitos de hardware</h3>
+            <p>Noções de componentes, montagem, manutenção básica e funcionamento de computadores.</p>
+            <div class="skill-list"><span class="skill">PC</span><span class="skill">Manutenção</span><span class="skill">Componentes</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projetos">
+      <div class="wrap">
+        <div class="section-head">
+          <div><p class="eyebrow">Portfólio</p><h2>Projetos que fiz</h2></div>
+          <p>Cards prontos para você trocar pelos links reais dos seus repositórios, páginas publicadas e executáveis.</p>
+        </div>
+
+        <div class="projects-tools">
+          <button class="chip" type="button" data-filter="todos" aria-pressed="true">Todos</button>
+          <button class="chip" type="button" data-filter="web">Web</button>
+          <button class="chip" type="button" data-filter="python">Python</button>
+          <button class="chip" type="button" data-filter="react">React</button>
+          <input class="search" id="projectSearch" type="search" placeholder="Buscar projeto ou tecnologia">
+        </div>
+
+        <div class="cards" id="projectGrid">
+          <article class="card project-card" data-category="web javascript">
+            <div class="card-body">
+              <span class="tag">Web</span>
+              <h3>Site PEI Leonice</h3>
+              <p>Site escolar com história, notícias, professores, tecnologia, educação, esportes, redes sociais e música.</p>
+              <div class="project-meta"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+              <div class="project-links"><a href="#">GitHub</a><a href="#">Ver online</a></div>
+            </div>
+          </article>
+
+          <article class="card project-card" data-category="python">
+            <div class="card-body">
+              <span class="tag">Python</span>
+              <h3>App de matemática</h3>
+              <p>Aplicativo desktop com fórmulas, explicações, exemplos, busca e filtros por nível de ensino.</p>
+              <div class="project-meta"><span>Python</span><span>Tkinter</span><span>Desktop</span></div>
+              <div class="project-links"><a href="#">GitHub</a><a href="#">Download</a></div>
+            </div>
+          </article>
+
+          <article class="card project-card" data-category="python">
+            <div class="card-body">
+              <span class="tag">Python</span>
+              <h3>App de física</h3>
+              <p>Aplicativo com fórmulas, explicações e calculadora para cinemática, dinâmica, eletricidade e faculdade.</p>
+              <div class="project-meta"><span>Python</span><span>Cálculos</span><span>Tkinter</span></div>
+              <div class="project-links"><a href="#">GitHub</a><a href="#">Download</a></div>
+            </div>
+          </article>
+
+          <article class="card project-card" data-category="web javascript">
+            <div class="card-body">
+              <span class="tag">PWA</span>
+              <h3>Tempo, bolsa e economia</h3>
+              <p>App instalável no celular com previsão do tempo, horário, bolsa de valores e planilha de dinheiro guardado.</p>
+              <div class="project-meta"><span>PWA</span><span>APIs</span><span>LocalStorage</span></div>
+              <div class="project-links"><a href="#">GitHub</a><a href="#">Ver online</a></div>
+            </div>
+          </article>
+
+          <article class="card project-card" data-category="web react">
+            <div class="card-body">
+              <span class="tag">React</span>
+              <h3>Projeto em React</h3>
+              <p>Espaço reservado para um projeto em React, como dashboard, lista de tarefas ou sistema simples.</p>
+              <div class="project-meta"><span>React</span><span>Componentes</span><span>Estado</span></div>
+              <div class="project-links"><a href="#">GitHub</a><a href="#">Ver online</a></div>
+            </div>
+          </article>
+
+          <article class="card project-card" data-category="web">
+            <div class="card-body">
+              <span class="tag">Novo</span>
+              <h3>Outro projeto seu</h3>
+              <p>Substitua este card por outro trabalho, explicando problema, solução e tecnologias utilizadas.</p>
+              <div class="project-meta"><span>HTML</span><span>CSS</span><span>JS</span></div>
+              <div class="project-links"><a href="#">GitHub</a><a href="#">Ver online</a></div>
+            </div>
+          </article>
+        </div>
+
+        <div class="edit-note">
+          <strong>Editar projetos:</strong> no código, troque os textos dos cards e substitua os links <code>href="#"</code> pelos links reais.
+        </div>
+      </div>
+    </section>
+
+    <section class="band" id="redes">
+      <div class="wrap">
+        <div class="section-head">
+          <div><p class="eyebrow">Redes</p><h2>Endereços profissionais</h2></div>
+          <p>Área para centralizar seus contatos. Os links abaixo são modelos para você substituir pelos seus endereços reais.</p>
+        </div>
+
+        <div class="grid-2">
+          <article class="panel">
+            <h3>Links principais</h3>
+            <div class="social-list">
+              <a href="https://github.com/seu-usuario" rel="noopener">GitHub</a>
+              <a href="https://www.instagram.com/seu-usuario" rel="noopener">Instagram</a>
+              <a href="https://www.linkedin.com/in/seu-perfil" rel="noopener">LinkedIn</a>
+              <a href="mailto:seu-email@exemplo.com">E-mail</a>
+            </div>
+          </article>
+
+          <article class="panel">
+            <h3>Troque no código</h3>
+            <p><strong>GitHub:</strong> https://github.com/seu-usuario</p>
+            <p><strong>Instagram:</strong> https://www.instagram.com/seu-usuario</p>
+            <p><strong>LinkedIn:</strong> https://www.linkedin.com/in/seu-perfil</p>
+            <p><strong>E-mail:</strong> seu-email@exemplo.com</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="formacao">
+      <div class="wrap">
+        <div class="section-head">
+          <div><p class="eyebrow">Trajetória</p><h2>Formação e próximos passos</h2></div>
+          <p>Linha do tempo simples para mostrar evolução, estudos e foco profissional.</p>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="when">Atual</div>
+            <div>
+              <h3>Análise e Desenvolvimento de Sistemas</h3>
+              <p>Curso em fase final, com foco em lógica, programação, desenvolvimento de sistemas, banco de dados e fundamentos de tecnologia.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="when">Base técnica</div>
+            <div>
+              <h3>Web, Python e ferramentas</h3>
+              <p>Estudos e prática com HTML, CSS, JavaScript, Python, React, Git, GitHub, Linux e hardware.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="when">Próximo passo</div>
+            <div>
+              <h3>Publicar projetos no GitHub</h3>
+              <p>Organizar repositórios, criar README profissional, colocar imagens dos projetos e disponibilizar links para empresas.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="band" id="contato">
+      <div class="wrap contact-grid">
+        <div>
+          <p class="eyebrow">Contato</p>
+          <h2>Vamos conversar sobre tecnologia</h2>
+          <p class="muted">Atualize os dados com seus links reais e use esta página como cartão profissional.</p>
+          <div class="actions">
+            <button class="btn btn-dark" id="copyEmail" type="button">Copiar e-mail</button>
+            <a class="btn btn-light" href="#projetos">Ver projetos</a>
+          </div>
+        </div>
+
+        <aside class="contact-box">
+          <div class="contact-line"><strong>Nome</strong><span>Renato Silva Proença</span></div>
+          <div class="contact-line"><strong>Idade</strong><span>38 anos</span></div>
+          <div class="contact-line"><strong>E-mail</strong><a id="emailText" href="mailto:seu-email@exemplo.com">seu-email@exemplo.com</a></div>
+          <div class="contact-line"><strong>GitHub</strong><a href="https://github.com/seu-usuario" rel="noopener">github.com/seu-usuario</a></div>
+          <div class="contact-line"><strong>Instagram</strong><a href="https://www.instagram.com/seu-usuario" rel="noopener">instagram.com/seu-usuario</a></div>
+          <div class="contact-line"><strong>LinkedIn</strong><a href="https://www.linkedin.com/in/seu-perfil" rel="noopener">linkedin.com/in/seu-perfil</a></div>
+          <div class="contact-line"><strong>Área</strong><span>Desenvolvimento de Sistemas</span></div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-grid">
+      <strong>Renato Silva Proença</strong>
+      <span>Portfólio cyberpunk criado com HTML, CSS e JavaScript.</span>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById("nav");
+    const menu = document.getElementById("menu");
+    const chips = [...document.querySelectorAll(".chip")];
+    const projects = [...document.querySelectorAll(".project-card")];
+    const search = document.getElementById("projectSearch");
+    let activeFilter = "todos";
+
+    menu.addEventListener("click", () => {
+      const open = nav.classList.toggle("open");
+      menu.setAttribute("aria-expanded", String(open));
+    });
+
+    document.querySelectorAll(".nav-links a").forEach((link) => {
+      link.addEventListener("click", () => {
+        nav.classList.remove("open");
+        menu.setAttribute("aria-expanded", "false");
+      });
+    });
+
+    function filterProjects() {
+      const term = search.value.trim().toLowerCase();
+
+      projects.forEach((project) => {
+        const category = project.dataset.category || "";
+        const text = project.textContent.toLowerCase();
+        const filterOk = activeFilter === "todos" || category.includes(activeFilter);
+        const searchOk = !term || text.includes(term);
+
+        project.classList.toggle("hidden", !(filterOk && searchOk));
+      });
+    }
+
+    chips.forEach((chip) => {
+      chip.addEventListener("click", () => {
+        activeFilter = chip.dataset.filter;
+        chips.forEach((item) => item.setAttribute("aria-pressed", String(item === chip)));
+        filterProjects();
+      });
+    });
+
+    search.addEventListener("input", filterProjects);
+
+    document.getElementById("copyEmail").addEventListener("click", async () => {
+      const email = document.getElementById("emailText").textContent.trim();
+
+      try {
+        await navigator.clipboard.writeText(email);
+        alert("E-mail copiado. Troque pelo seu e-mail real no código.");
+      } catch (_error) {
+        alert("E-mail: " + email);
+      }
+    });
+  </script>
+</body>
+</html>
